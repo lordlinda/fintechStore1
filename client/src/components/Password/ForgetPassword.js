@@ -6,15 +6,24 @@ import {connect} from 'react-redux'
 
 import * as actions from '../../redux/actions/index.js'
 const ForgetPassword=(props)=>{
+
 	const [formData,setFormData]=useState({
     email:''
   })
 	
   const {email}=formData
+
+//handle input matchhes the value passed with that written in the respective input space
+ //e.g whatever is passed in the function with variable 'name' is matched to whatever the user
+ //inputs for the part field
  const handleInput=text=>e=>{
  	setFormData({...formData,email:e.target.value})
  }
+
+ //handleSubmit handles submission to the backend
  const handleSubmit=async(e)=>{
+  //this function prevents the  automatic submission of the form tag for submission to be 
+  //flawless
   e.preventDefault()
  	if(email){
       console.log(email)

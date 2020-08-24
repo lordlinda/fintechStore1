@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "simple paypal shop",
   "main": "server.js",
+  "engines": {
+    "node": "v12.18.3"
+  },
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
