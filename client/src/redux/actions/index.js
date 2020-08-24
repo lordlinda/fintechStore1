@@ -5,7 +5,7 @@ export const signUp=(user)=>{
                	type:'setLoading'
                })
       await axios
-                .post('http://localhost:5000/users/signup',user)
+                .post('/users/signup',user)
                 .then(res=>{
                 	dispatch({
                 		type:'signUp',
@@ -27,7 +27,7 @@ export const signIn=(user)=>{
                	type:'setLoading'
                })
       await axios
-                .post('http://localhost:5000/users/signin',user)
+                .post('/users/signin',user)
                 .then(res=>{
                 	console.log(res.data)
                 	dispatch({
@@ -50,7 +50,7 @@ export const forgetPassword=(email)=>{
                	type:'setLoading'
                })
       await axios
-                .post('http://localhost:5000/users/forgetPassword',{email:email})
+                .post('/users/forgetPassword',{email:email})
                 .then(res=>{
                 	//console.log(res.data)
                 	dispatch({
@@ -72,7 +72,7 @@ export const resetPassword=(password,token)=>{
                	type:'setLoading'
                })
       await axios
-                .patch('http://localhost:5000/users/resetPassword',{password:password,token:token})
+                .patch('/users/resetPassword',{password:password,token:token})
                 .then(res=>{
                 	console.log(res.data)
                 	dispatch({
@@ -94,7 +94,7 @@ export const getProducts=()=>{
                	type:'setLoading'
                })
       await axios
-                .post('http://localhost:5000/products/getProducts')
+                .post('/products/getProducts')
                 .then(res=>{
                 	//console.log(res.data)
                 	dispatch({
@@ -112,7 +112,7 @@ export const getByCategory=(category)=>{
                 type:'setLoading'
                })
     await axios
-                .post('http://localhost:5000/products/getProducts',{category:category})
+                .post('/products/getProducts',{category:category})
                 .then(res=>{
                   console.log(res.data)
                   dispatch({
@@ -152,7 +152,7 @@ export const makePayment=(data)=>{
                dispatch({
                 type:'setLoading'
                })
-     await axios.post('http://localhost:5000/users/handlePayments',data)
+     await axios.post('/users/handlePayments',data)
                 .then(res=>{
                   //console.log(res.data)
                   dispatch({
@@ -175,7 +175,7 @@ export const getHistory=()=>{
                dispatch({
                 type:'setLoading'
                })
-     await axios.get('http://localhost:5000/users/history')
+     await axios.get('/users/history')
                 .then(res=>{
                   //console.log(res.data)
                   dispatch({

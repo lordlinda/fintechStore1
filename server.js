@@ -3,7 +3,7 @@ const cors=require('cors')
 const morgan=require('morgan')
 const dotenv =require('dotenv')
 const bodyParser = require('body-parser')
-
+const path=require('path')
 
 const connectDB =require('./db.js')
 //conencting to mongodb
@@ -29,7 +29,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/users',require('./routes/users.js'))
 app.use('/products',require('./routes/products.js'))
 
-
+//ading handle fro client app
+//this tells the server to look for the build of the react app
+if (process.env.NODE_ENV === 'production' ) {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  });
+}
 //we have a port ,when we deploy we have a different port than the one we use
 //for local development
 const Port =process.env.PORT || 5000
