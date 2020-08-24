@@ -5,6 +5,6 @@ const connection = mongoose.connect('mongodb://localhost/paypal' || process.env.
 	 useNewUrlParser: true,
 	 useUnifiedTopology: true ,
 }).then(()=>console.log(`Connected to mongodb ...`))
-  .catch(err=> console.log('just a little issue'))
+  .catch(err=> console.log(err))
 
   module.exports = connection
