@@ -1,6 +1,6 @@
 import React from 'react';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
- 
+ import {toast} from 'react-toastify'
 export default class MyApp extends React.Component {
      
     render() {
@@ -14,12 +14,14 @@ export default class MyApp extends React.Component {
         }
  
         const onCancel = (data) => {
+            toast.success('The payment was cancelled!')
             // User pressed "cancel" or close Paypal's popup!
             console.log('The payment was cancelled!', data);
             // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
         }
  
         const onError = (err) => {
+            toast.error('Please try again')
             // The main Paypal's script cannot be loaded or somethings block the loading of that script!
             console.log("Error!", err);
             // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"

@@ -26,7 +26,7 @@ const Navbar=(props)=>{
  	/>
 
  	{
- 		props.isAuth=== true?
+ 		props.isAuth === true ?
  		<Button
  		isButton='true'
  	title='Signout'

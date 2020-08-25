@@ -254,7 +254,7 @@ sgMail
 },
 //this is the email the user receives when they want to update their password
 resetPasswordEmail:(email,token)=>{
-  console.log(email,token)
+  //console.log(email,token)
   const msg = {
   to:email,
   from: process.env.EMAIL_FROM, // Use the email address or domain you verified above

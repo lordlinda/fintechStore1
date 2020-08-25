@@ -1,15 +1,15 @@
 const initState={
-	token:'',
+	token:localStorage.getItem('token'),
 	Msg:'',
-	loading:false,
+	loading:true,
 	name:'',
-	isAuth:false,
+	isAuth:null,
 	sucess:false,
 	products:[],
 	cart:[],
 	history:[]
 }
-const token = localStorage.getItem('token')
+
 export default (state=initState,action)=>{
 	switch(action.type){
 		case 'signUp':
@@ -25,6 +25,11 @@ export default (state=initState,action)=>{
 			...state,
 			token:action.payload.token,
 			loading:false,
+			isAuth:true
+		}
+		case 'auth':
+		return {
+			...state,
 			isAuth:true
 		}
 		case 'setLoading':

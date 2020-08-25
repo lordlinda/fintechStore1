@@ -1,4 +1,16 @@
 import axios from 'axios'
+import {toast} from 'react-toastify'
+
+
+export const  setAuth=()=>{
+  if(localStorage.token){
+    return dispatch=>{
+       dispatch({
+        type:'auth'
+       })
+    }
+  }
+}
 
 export const signUp=(user)=>{
 	return async dispatch=>{
@@ -12,9 +24,11 @@ export const signUp=(user)=>{
                 		type:'signUp',
                 		payload:res.data
                 	})
+                  dispatch(setAuth())
                    localStorage.setItem('token',res.data.token)
                 }).catch(err=>{
-                  console.log(err)
+                  //console.log(err)
+                  toast.error(err.response.data.msg)
                   dispatch({
                 		type:'authError',
                 		payload:err.response.data.msg
@@ -36,11 +50,14 @@ export const signIn=(user)=>{
                 		type:'signIn',
                 		payload:res.data
                 	})
+                  
                    localStorage.setItem('token',res.data.token)
+                   dispatch(setAuth())
                 }).catch(err=>{
+                  toast.error(err.response.data.msg)
                   dispatch({
                 		type:'authError',
-                		payload:err.response.data.msg
+                		payload:err
                 	})
                 })
 	}
@@ -103,6 +120,7 @@ export const getProducts=()=>{
                 		type:'getProducts',
                 		payload:res.data.products
                 	})
+                  dispatch(setAuth())
                 }).catch(err=>{
                   console.log(err)
                 })
@@ -121,6 +139,7 @@ export const getByCategory=(category)=>{
                     type:'getByCategory',
                     payload:res.data.products
                   })
+                  dispatch(setAuth())
                 }).catch(err=>{
                   console.log(err)
                 })
@@ -133,7 +152,7 @@ export const addToCart=(item)=>{
        type:'AddToCart',
        payload:item
     })
-   
+   dispatch(setAuth())
   }
 
 }
@@ -144,7 +163,7 @@ export const removeFromCart=(item)=>{
        type:'removeFromCart',
        payload:item
     })
-   
+   dispatch(setAuth())
   }
 
 }
@@ -161,7 +180,7 @@ export const makePayment=(data)=>{
                  type:'makePayment',
                  payload:res.data.msg
               })
-   
+                dispatch(setAuth())
                 }).catch(err=>{
                   dispatch({
                     type:'paymenterror',
@@ -184,7 +203,7 @@ export const getHistory=()=>{
                  type:'getPurchases',
                  payload:res.data.history
               })
-   
+               dispatch(setAuth())
                 }).catch(err=>{
                   dispatch({
                     type:'paymenterror',

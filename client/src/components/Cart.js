@@ -105,10 +105,15 @@ const Cart=(props)=>{
 		Total:{Total}
 		</div>
 		<div className='ml-5'>
-          <Paypal 
+		{
+			props.cart.length > 0 ?
+			 <Paypal 
           total={Total}
           onSuccess={handleTransaction}
           />
+			:null
+		}
+         
           </div>
 		</div>
 		)

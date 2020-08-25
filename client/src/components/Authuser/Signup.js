@@ -35,9 +35,6 @@ const {name,email,password}=formData
         //console.log('auth')
        toast.success(`Welcome ${props.name}`)
        props.history.push('/')
-      }else{
-        //console.log('error')
-        toast.error(props.error)
       }
     }
 
