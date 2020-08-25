@@ -33,13 +33,10 @@ const {password2,password}=formData
  	if(props.sucess === true){
 
     toast.success(props.message)
-  }else{
-
-    toast.error(props.message)
   }
  }
  return (
- 	<div>
+ 	<div className='container mx-auto px-12'>
  	<form onSubmit={handleSubmit}>
              <Input 
         title='Password'

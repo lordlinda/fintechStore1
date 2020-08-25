@@ -33,8 +33,6 @@ const ForgetPassword=(props)=>{
  	}
  	if(props.sucess === true){
     toast.success(props.message)
-  }else{
-    toast.error(props.message)
   }
  }
  //console.log(props)

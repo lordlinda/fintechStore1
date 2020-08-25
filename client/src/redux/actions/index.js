@@ -72,6 +72,7 @@ export const forgetPassword=(email)=>{
                 .post('/users/forgetPassword',{email:email})
                 .then(res=>{
                 	//console.log(res.data)
+                  toast.success(res.data.msg)
                 	dispatch({
                 		type:'forgetPassword',
                 		payload:res.data.msg
@@ -93,7 +94,8 @@ export const resetPassword=(password,token)=>{
       await axios
                 .patch('/users/resetPassword',{password:password,token:token})
                 .then(res=>{
-                	console.log(res.data)
+                  toast.success(res.data.msg)
+                	//console.log(res.data)
                 	dispatch({
                 		type:'resetPassword',
                 		payload:res.data.msg

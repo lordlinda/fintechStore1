@@ -33,9 +33,6 @@ const {email,password}=formData
       if(isAuth()===true ){
        toast.success(`Welcome back`)
        props.history.push('/')
-      }else{
-        //console.log('error')
-        toast.error(props.error)
       }
  	}else{
     //if  all fields havent been filled then we show this error
