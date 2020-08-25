@@ -15,7 +15,7 @@ const History=(props)=>{
      { isAuth() === false ? <Redirect to='/signin'/>:null }
  	{    //we first have to ensure that the user has an actual history before we map
  		//all the properties will be undefined and yet it is because the cart is empty
- 		props.history.length >0 ?
+ 		props.history.length > 0 ?
  		<div>
  		{
  			props.history.map((product,i)=>{

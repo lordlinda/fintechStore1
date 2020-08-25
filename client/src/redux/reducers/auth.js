@@ -83,6 +83,11 @@ export default (state=initState,action)=>{
 			...state,
 			history:action.payload,
 		}
+		case 'signout':
+		return {
+			...state,
+			isAuth:false
+		}
 		default:
 		return state
 	}
