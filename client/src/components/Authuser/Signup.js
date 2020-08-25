@@ -3,6 +3,7 @@ import {toast} from 'react-toastify'
 import Input from '../Input.js'
 import Button from '../Button.js'
 import {connect} from 'react-redux'
+import {isAuth} from '../../helpers.js'
 
 import * as actions from '../../redux/actions/index.js'
 const Signup=(props)=>{
@@ -30,7 +31,7 @@ const {name,email,password}=formData
      if(props.isLoading === false){
       //if the user is authenticated then we can send the user to
       //the home page
-      if(props.isAuth === true ){
+      if(isAuth() === true ){
         //console.log('auth')
        toast.success(`Welcome ${props.name}`)
        props.history.push('/')
@@ -39,7 +40,7 @@ const {name,email,password}=formData
         toast.error(props.error)
       }
     }
-      
+
  	}else{
     //if the user has not been filled in any of the fields ,we send the
     //error to the client

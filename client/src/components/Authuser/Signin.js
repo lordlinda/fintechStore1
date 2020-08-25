@@ -3,7 +3,8 @@ import {toast} from 'react-toastify'
 import Input from '../Input.js'
 import Button from '../Button.js'
 import {connect} from 'react-redux'
-
+import {isAuth} from '../../helpers.js'
+import {Redirect} from 'react-router-dom'
 import * as actions from '../../redux/actions/index.js'
 const Signin=(props)=>{
   /*we setup state for our form with initial values which are emty strings in this case*/
@@ -29,7 +30,7 @@ const {email,password}=formData
       //console.log(formData)
       //then we submit the form
       await props.signIn(formData)
-      if(props.isAuth===true ){
+      if(isAuth()===true ){
        toast.success(`Welcome back`)
        props.history.push('/')
       }else{

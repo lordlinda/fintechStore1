@@ -6,6 +6,7 @@ import Button from './Button.js'
 import svg from '../images/cart-empty.jpg'
 import *as actions from '../redux/actions/index.js'
 import {Redirect} from 'react-router-dom'
+import {isAuth} from '../helpers.js'
 
 const Cart=(props)=>{
 	const [Total,setTotal]=useState(0)
@@ -49,18 +50,16 @@ const Cart=(props)=>{
           }
           await props.makePayment(variables)
           if(props.isLoading === false){
-          		toast.success(` Congragulations ${props.message}`)
+          		toast.success(` Congragulations ,Payment sucessful`)
           }
 	}
-	//console.log(props)
+	console.log(isAuth())
 	return (
 		<div className='w-full'>
 	{/*if the user is not signed in,they are redirected to the signin page,this acts like our auth guard*/}
-		{props.isAuth === false ?
-			<>
+		{ isAuth() === false ?
 			< Redirect to='/signin'/>
-             toast.error('Please signin')
-		</>:null }
+		:null }
 		<h1 className='text-3xl ml-3'> My cart</h1>
 		<div>
 		{   //it is important to write this first because if the cart it will not have any

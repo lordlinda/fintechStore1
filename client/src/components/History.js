@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react'
 import  {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
+import {isAuth} from '../helpers.js'
 import * as actions from '../redux/actions/index.js'
 const History=(props)=>{
 	//this hows all our users previous purchases
@@ -11,7 +12,7 @@ const History=(props)=>{
  return (
  	<div className='px-4 py-2'>
  	 <p className='text-2xl center'>Items</p>
-     {props.isAuth ===false ? <Redirect to='/signin'/>:null }
+     { isAuth() === false ? <Redirect to='/signin'/>:null }
  	{    //we first have to ensure that the user has an actual history before we map
  		//all the properties will be undefined and yet it is because the cart is empty
  		props.history.length >0 ?

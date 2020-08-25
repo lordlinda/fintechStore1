@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 export const signUp=(user)=>{
 	return async dispatch=>{
 		dispatch({
@@ -13,9 +14,10 @@ export const signUp=(user)=>{
                 	})
                    localStorage.setItem('token',res.data.token)
                 }).catch(err=>{
+                  console.log(err)
                   dispatch({
                 		type:'authError',
-                		payload:err.response.data.msg
+                		payload:err
                 	})
                 })
 	}
@@ -200,3 +202,4 @@ export const signOut=()=>{
     })
   }
 }
+

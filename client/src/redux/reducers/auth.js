@@ -10,7 +10,6 @@ const initState={
 	history:[]
 }
 const token = localStorage.getItem('token')
-
 export default (state=initState,action)=>{
 	switch(action.type){
 		case 'signUp':
@@ -28,12 +27,10 @@ export default (state=initState,action)=>{
 			loading:false,
 			isAuth:true
 		}
-
 		case 'setLoading':
 		return {
 			...state,
 			loading:true,
-			isAuth:token ? true :false
 		}
 		case 'authError':
 		return {
@@ -59,21 +56,18 @@ export default (state=initState,action)=>{
 			...state,
 			loading:false,
 			products:action.payload,
-			isAuth:token ? true :false
 			
 		}
 		case 'AddToCart':
 		return {
 			...state,
 			cart:[action.payload,...state.cart],
-			isAuth:token ? true :false
 			
 		}
 		case 'removeFromCart':
 		return {
 			...state,
 			cart:state.cart.filter(cartItem => cartItem.id !== action.payload ),
-			isAuth:token ? true :false
 			
 		}
 		case 'makePayment':
@@ -82,14 +76,12 @@ export default (state=initState,action)=>{
 			cart:[],
 			Msg:action.payload,
 			sucess:true,
-			isAuth:token ? true :false
 
 		}
 		case 'getPurchases':
 		return {
 			...state,
 			history:action.payload,
-			isAuth:token ? true :false
 		}
 		default:
 		return state

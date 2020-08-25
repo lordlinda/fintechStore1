@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Button from './Button.js'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {isAuth} from '../helpers.js'
 import * as actions from '../redux/actions/index.js'
 //this is the navbar
 const Navbar=(props)=>{
@@ -9,7 +10,7 @@ const Navbar=(props)=>{
 	const signOut=()=>{
        props.signOut()
 	}
-	//console.log(props)
+	
  return (
  	<div className='bg-indigo-600 px-2'>
  	<nav className='flex justify-between py-2 align-items-start'>
@@ -25,7 +26,7 @@ const Navbar=(props)=>{
  	/>
 
  	{
- 		props.isAuth === true ?
+ 		isAuth() === true?
  		<Button
  		isButton='true'
  	title='Signout'
