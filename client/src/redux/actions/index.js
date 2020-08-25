@@ -17,7 +17,7 @@ export const signUp=(user)=>{
                   console.log(err)
                   dispatch({
                 		type:'authError',
-                		payload:err
+                		payload:err.response.data.msg
                 	})
                 })
 	}
