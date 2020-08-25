@@ -42,7 +42,7 @@ const {email,password}=formData
  }
 //console.log(props)
 	return (
-		<div className='border-gray-300 px-4 md:container mx-auto md:px-20'>
+		<div className='border-gray-300 px-4 md:container mx-auto md:px-20 lg:w-1/2  lg:mt-10 xl:w-1/2'>
          {/*container mx-auto centers the conatiner in the middle of the screen*/}
 
 		<h3 className='text-4xl text-center text-gray-800'>Signin</h3>
