@@ -7,7 +7,7 @@ import svg from '../images/cart-empty.jpg'
 import *as actions from '../redux/actions/index.js'
 import {Redirect} from 'react-router-dom'
 import {isAuth} from '../helpers.js'
-
+import {Link} from 'react-router-dom'
 const Cart=(props)=>{
 	const [Total,setTotal]=useState(0)
 
@@ -95,7 +95,9 @@ const Cart=(props)=>{
 		</table>
 			:
 			<div className='w-full text-center'>
-			 <img src={svg} className='object-center object-cover' alt='empty cart'/>
+			<Link to='/'>
+			 <img src={svg} className='object-center object-cover self-center' alt='empty cart'/>
+			 </Link>
 			</div>
 		}
 		</div>
